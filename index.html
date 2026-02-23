@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EBS 수능특강 독서 | 과학·기술 개념 학습서</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #2d6a4f;
+    --green-light: #52b788;
+    --green-pale: #d8f3dc;c
+    --green-mid: #95d5b2;
+    --purple: #6b3fa0;
+    --purple-light: #9b72cf;
+    --purple-pale: #ede7f6;
+    --pink: #c77dff;
+    --orange: #e07a5f;
+    --blue: #3d7ebf;
+    --blue-pale: #e8f1fb;
+    --gray-dark: #1a1a2e;
+    --gray-mid: #4a4a6a;
+    --gray-light: #f5f5f7;
+    --white: #ffffff;
+    --border: #e0e0e0;
+    --shadow: 0 4px 20px rgba(0,0,0,0.08);
+    --shadow-strong: 0 8px 32px rgba(0,0,0,0.14);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #f0f2f5;
+    color: var(--gray-dark);
+    line-height: 1.7;
+    font-size: 14px;
+  }
+
+  /* ===== COVER ===== */
+  .cover {
+    background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 50%, #40916c 100%);
+    color: white;
+    padding: 60px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 300px; height: 300px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 50%;
+  }
+  .cover .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 20px;
+    padding: 4px 16px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+  .cover h1 {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+  }
+  .cover .subtitle {
+    font-size: 16px;
+    opacity: 0.8;
+    margin-bottom: 30px;
+  }
+  .cover .tags {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cover .tag {
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* ===== NAV TABS ===== */
+  .nav-tabs {
+    display: flex;
+    background: white;
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .nav-tab {
+    flex: 1;
+    padding: 16px 10px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray-mid);
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .nav-tab:hover { background: var(--gray-light); }
+  .nav-tab.active {
+    color: var(--green);
+    border-bottom-color: var(--green);
+    font-weight: 700;
+    background: #f8fff9;
+  }
+
+  /* ===== SECTION PANEL ===== */
+  .section-panel {
+    display: none;
+    padding: 24px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .section-panel.active { display: block; }
+
+  /* ===== SECTION HEADER ===== */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--green-pale);
+  }
+  .section-num {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900;
+    font-size: 18px;
+    color: white;
+    flex-shrink: 0;
+  }
+  .num-green { background: var(--green); }
+  .num-purple { background: var(--purple); }
+  .section-title-wrap h2 {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--gray-dark);
+  }
+  .section-title-wrap p {
+    font-size: 12px;
+    color: var(--gray-mid);
+  }
+
+  /* ===== OVERVIEW BOX ===== */
+  .overview-box {
+    background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+    border-left: 5px solid var(--green);
+    border-radius: 0 12px 12px 0;
+    padding: 18px 20px;
+    margin-bottom: 24px;
+    font-size: 13.5px;
+    color: #2d3a2d;
+    line-height: 1.8;
+  }
+  .overview-box.purple {
+    background: linear-gradient(135deg, #ede7f6, #f3e5f5);
+    border-left-color: var(--purple);
+  }
+  .overview-box strong { color: var(--green); }
+  .overview-box.purple strong { color: var(--purple); }
+
+  /* ===== ORG CHART / MIND MAP ===== */
+  .org-chart {
+    background: white;
+    border-radius: 16px;
+    padding: 28px 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+    overflow-x: auto;
+  }
+  .org-chart h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--green);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .org-chart h3.purple { color: var(--purple); }
+  .org-chart h3::before {
+    content: '';
+    display: inline-block;
+    width: 4px; height: 16px;
+    background: var(--green);
+    border-radius: 2px;
+  }
+  .org-chart h3.purple::before { background: var(--purple); }
+
+  .flow-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
+  }
+  .flow-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .flow-arrow-down {
+    text-align: center;
+    color: var(--green);
+    font-size: 20px;
+    margin: 4px 0;
+  }
+  .flow-arrow-down.purple { color: var(--purple); }
+
+  .fnode {
+    border-radius: 12px;
+    padding: 10px 16px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 90px;
+    position: relative;
+  }
+  .fnode-main {
+    background: var(--green);
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 12px 24px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(45,106,79,0.3);
+  }
+  .fnode-main.purple {
+    background: var(--purple);
+    box-shadow: 0 4px 12px rgba(107,63,160,0.3);
+  }
+  .fnode-sub {
+    background: var(--green-pale);
+    color: var(--green);
+    border: 1.5px solid var(--green-mid);
+  }
+  .fnode-sub.purple {
+    background: var(--purple-pale);
+    color: var(--purple);
+    border-color: var(--purple-light);
+  }
+  .fnode-leaf {
+    background: var(--gray-light);
+    color: var(--gray-mid);
+    border: 1px solid var(--border);
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .fnode-highlight {
+    background: var(--orange);
+    color: white;
+    font-weight: 700;
+  }
+
+  /* wide grid for org chart */
+  .concept-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 8px;
+  }
+  @media (max-width: 600px) {
+    .concept-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .cnode {
+    border-radius: 12px;
+    padding: 14px;
+    border: 1.5px solid;
+  }
+  .cnode-green { background: #f0faf4; border-color: var(--green-mid); }
+  .cnode-purple { background: var(--purple-pale); border-color: var(--purple-light); }
+  .cnode-blue { background: var(--blue-pale); border-color: #90bde0; }
+  .cnode-orange { background: #fff5f2; border-color: #e8a592; }
+  .cnode h4 {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .cnode-green h4 { color: var(--green); }
+  .cnode-purple h4 { color: var(--purple); }
+  .cnode-blue h4 { color: var(--blue); }
+  .cnode-orange h4 { color: var(--orange); }
+  .cnode p { font-size: 12px; color: var(--gray-mid); line-height: 1.6; }
+
+  /* ===== CONCEPT CARDS ===== */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 600px) { .cards-grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: white;
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--green);
+  }
+  .card.purple { border-top-color: var(--purple); }
+  .card.blue { border-top-color: var(--blue); }
+  .card.orange { border-top-color: var(--orange); }
+  .card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 6px;
+  }
+  .card.purple .card-label { color: var(--purple); }
+  .card.blue .card-label { color: var(--blue); }
+  .card.orange .card-label { color: var(--orange); }
+  .card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--gray-dark);
+  }
+  .card p {
+    font-size: 13px;
+    color: var(--gray-mid);
+    line-height: 1.7;
+  }
+  .card .keyword {
+    display: inline-block;
+    background: var(--green-pale);
+    color: var(--green);
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .card.purple .keyword { background: var(--purple-pale); color: var(--purple); }
+  .card.blue .keyword { background: var(--blue-pale); color: var(--blue); }
+
+  /* ===== COMPARE TABLE ===== */
+  .compare-table {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+  }
+  .compare-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .compare-table th {
+    padding: 12px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: left;
+  }
+  .compare-table th:first-child { background: var(--gray-dark); color: white; }
+  .compare-table th.green-head { background: var(--green); color: white; }
+  .compare-table th.purple-head { background: var(--purple); color: white; }
+  .compare-table td {
+    padding: 11px 16px;
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .compare-table tr:hover td { background: var(--gray-light); }
+  .compare-table td:first-child {
+    font-weight: 700;
+    color: var(--gray-dark);
+    background: #f9f9f9;
+    width: 110px;
+  }
+
+  /* ===== QUIZ SECTION ===== */
+  .quiz-section {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+  }
+  .quiz-section h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gray-dark);
+  }
+  .quiz-badge {
+    background: var(--green);
+    color: white;
+    border-radius: 6px;
+    padding: 2px 10px;
+    font-size: 12px;
+  }
+  .quiz-badge.purple { background: var(--purple); }
+
+  .quiz-item {
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    transition: all 0.2s;
+  }
+  .quiz-item:hover { border-color: var(--green-mid); }
+  .quiz-q {
+    font-size: 13.5px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+  .quiz-q .qnum {
+    display: inline-block;
+    width: 24px; height: 24px;
+    background: var(--green);
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+  .quiz-q .qnum.purple { background: var(--purple); }
+  .quiz-btns {
+    display: flex;
+    gap: 8px;
+  }
+  .btn-ox {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    background: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+  .btn-ox:hover { transform: scale(1.04); }
+  .btn-ox.o-btn:hover, .btn-ox.o-btn.selected { border-color: var(--green); background: var(--green-pale); }
+  .btn-ox.x-btn:hover, .btn-ox.x-btn.selected { border-color: var(--orange); background: #fff5f2; }
+  .quiz-answer {
+    display: none;
+    margin-top: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .quiz-answer.correct { background: var(--green-pale); color: #1b4332; border-left: 3px solid var(--green); }
+  .quiz-answer.wrong { background: #fff5f2; color: #7f2e1a; border-left: 3px solid var(--orange); }
+  .quiz-answer.show { display: block; }
+
+  /* ===== VOCAB SECTION ===== */
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 500px) { .vocab-grid { grid-template-columns: 1fr; } }
+  .vocab-item {
+    background: white;
+    border-radius: 10px;
+    padding: 12px 14px;
+    box-shadow: var(--shadow);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .vocab-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .vocab-dot.purple { background: var(--purple); }
+  .vocab-term {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gray-dark);
+    margin-bottom: 3px;
+  }
+  .vocab-def {
+    font-size: 12px;
+    color: var(--gray-mid);
+    line-height: 1.5;
+  }
+
+  /* ===== TIP BOX ===== */
+  .tip-box {
+    background: linear-gradient(135deg, #fff8e1, #fffde7);
+    border: 1.5px solid #ffe082;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .tip-box .tip-label {
+    font-weight: 700;
+    color: #e65100;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  /* ===== PROCESS STEPS ===== */
+  .steps {
+    display: flex;
+    gap: 0;
+    margin-bottom: 24px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .step {
+    background: white;
+    border-radius: 12px;
+    padding: 14px 16px;
+    min-width: 130px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .step::after {
+    content: '→';
+    position: absolute;
+    right: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--green);
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .step:last-child::after { display: none; }
+  .step + .step { margin-left: 22px; }
+  .step-num {
+    width: 28px; height: 28px;
+    background: var(--green);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    margin: 0 auto 8px;
+  }
+  .step-num.purple { background: var(--purple); }
+  .step h5 { font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+  .step p { font-size: 11px; color: var(--gray-mid); }
+
+  /* ===== SECTION DIVIDER ===== */
+  .sec-divider {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--green);
+    text-transform: uppercase;
+    margin: 28px 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .sec-divider.purple { color: var(--purple); }
+  .sec-divider::after {
+    content: '';
+    flex: 1;
+    height: 1.5px;
+    background: var(--green-pale);
+  }
+  .sec-divider.purple::after { background: var(--purple-pale); }
+
+  /* ===== SCORE DISPLAY ===== */
+  .score-display {
+    background: var(--green-pale);
+    border-radius: 12px;
+    padding: 14px;
+    text-align: center;
+    margin-top: 16px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--green);
+    display: none;
+  }
+  .score-display.show { display: block; }
+  .score-display.purple { background: var(--purple-pale); color: var(--purple); }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="badge">2027학년도 EBS 수능특강 독서</div>
+  <h1>과학·기술 핵심 개념 학습서</h1>
+  <p class="subtitle">지문 분석 · 개념 정리 · OX 퀴즈 · 연계 배경지식</p>
+  <div class="tags">
+    <span class="tag">💾 가상 메모리</span>
+    <span class="tag">🖥️ 연산 환경 변화와 GPU</span>
+    <span class="tag">🔗 연계 개념 포함</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav-tabs">
+  <div class="nav-tab active" onclick="showTab('vm')">💾 가상 메모리</div>
+  <div class="nav-tab" onclick="showTab('gpu')">🖥️ GPU</div>
+  <div class="nav-tab" onclick="showTab('quiz1')">✏️ 퀴즈 I</div>
+  <div class="nav-tab" onclick="showTab('quiz2')">✏️ 퀴즈 II</div>
+</div>
+
+<!-- ========== TAB 1: 가상 메모리 ========== -->
+<div id="tab-vm" class="section-panel active">
+
+  <div class="section-header">
+    <div class="section-num num-green">1</div>
+    <div class="section-title-wrap">
+      <h2>가상 메모리 (Virtual Memory)</h2>
+      <p>EBS 수능특강 독서 041쪽 | 개념 학습 03-③</p>
+    </div>
+  </div>
+
+  <div class="overview-box">
+    컴퓨터가 실행에 필요한 프로그램의 일부만을 <strong>주기억 장치</strong>에 올려놓고, 나머지는 <strong>보조 기억 장치</strong>에 두는 메모리 관리 기법. 프로그램을 <strong>같은 크기의 페이지</strong>로 나누어 필요한 페이지만 올리는 <strong>페이징(Paging)</strong> 방식을 주로 사용한다.
+  </div>
+
+  <!-- ORG CHART -->
+  <div class="org-chart">
+    <h3>🗂 가상 메모리 전체 구조도</h3>
+    <div class="flow-wrap">
+      <div class="flow-row">
+        <div class="fnode fnode-main">가상 메모리</div>
+      </div>
+      <div class="flow-arrow-down">▼</div>
+      <div class="flow-row">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+          <div class="fnode fnode-sub">페이징 (Paging)</div>
+          <div class="fnode fnode-leaf">고정 크기 단위로 분할</div>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+          <div class="fnode fnode-sub">세그멘테이션 (Segmentation)</div>
+          <div class="fnode fnode-leaf">논리적 단위로 분할</div>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+          <div class="fnode fnode-sub">세그먼트 페이징</div>
+          <div class="fnode fnode-leaf">두 방식의 결합</div>
+        </div>
+      </div>
+      <div class="flow-arrow-down">▼</div>
+      <div class="flow-row">
+        <div class="fnode fnode-highlight" style="border-radius:10px; padding:10px 20px; font-size:13px;">페이지 교체 알고리즘</div>
+      </div>
+      <div class="flow-arrow-down">▼</div>
+      <div class="flow-row">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+          <div class="fnode fnode-sub">FIFO</div>
+          <div class="fnode fnode-leaf">선입선출</div>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+          <div class="fnode fnode-sub">LRU</div>
+          <div class="fnode fnode-leaf">최소 최근 사용</div>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+          <div class="fnode fnode-sub">LFU</div>
+          <div class="fnode fnode-leaf">최소 빈도 사용</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 핵심 개념 카드 -->
+  <div class="sec-divider">핵심 개념</div>
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-label">Memory Device</div>
+      <span class="keyword">보조 기억 장치</span>
+      <h4>주기억 장치 vs 보조 기억 장치</h4>
+      <p>주기억 장치(RAM)는 용량이 작지만 속도가 빠르고, 보조 기억 장치(HDD/SSD)는 용량이 크고 영구 저장 가능. 가상 메모리는 보조 기억 장치를 메모리처럼 활용한다.</p>
+    </div>
+    <div class="card">
+      <div class="card-label">Paging</div>
+      <span class="keyword">페이징</span>
+      <h4>페이지 & 페이지 프레임</h4>
+      <p>프로그램을 같은 크기의 단위인 <b>페이지</b>로 분할하고, 주기억 장치의 수용 공간을 <b>페이지 프레임</b>이라 한다. 페이지 테이블이 가상 주소↔실제 주소를 매핑한다.</p>
+    </div>
+    <div class="card blue">
+      <div class="card-label">Page Fault</div>
+      <span class="keyword" style="background:var(--blue-pale);color:var(--blue);">페이지 부재</span>
+      <h4>페이지 부재 처리 과정</h4>
+      <p>실행에 필요한 페이지가 주기억 장치에 없는 상황. 보조 기억 장치에서 해당 페이지를 복사하여 페이지 프레임에 올린 후 실행을 재개한다.</p>
+    </div>
+    <div class="card orange">
+      <div class="card-label">Page Replacement</div>
+      <span class="keyword" style="background:#fff5f2;color:var(--orange);">페이지 교체</span>
+      <h4>페이지 프레임이 가득 찬 경우</h4>
+      <p>기존 페이지를 내보내고 새 페이지를 올려야 할 때 발생. 내보낼 페이지 내용이 수정되었으면 먼저 보조 기억 장치에 저장 후 교체한다.</p>
+    </div>
+  </div>
+
+  <!-- 페이지 교체 알고리즘 비교 -->
+  <div class="sec-divider">페이지 교체 알고리즘 비교</div>
+  <div class="compare-table">
+    <table>
+      <tr>
+        <th>방식</th>
+        <th class="green-head">정의</th>
+        <th class="green-head">장점</th>
+        <th class="green-head">단점</th>
+      </tr>
+      <tr>
+        <td>FIFO</td>
+        <td>가장 먼저 들어온 페이지부터 교체 (선입선출)</td>
+        <td>구현 단순</td>
+        <td>자주 쓰는 페이지도 삭제될 수 있음</td>
+      </tr>
+      <tr>
+        <td>LRU</td>
+        <td>가장 오랫동안 사용되지 않은 페이지 교체</td>
+        <td>시간 지역성 활용, 효율적</td>
+        <td>오랜 미사용이 앞으로 안 쓰인다는 보장 없음</td>
+      </tr>
+      <tr>
+        <td>LFU</td>
+        <td>사용 빈도가 가장 낮은 페이지 교체</td>
+        <td>실제 참조 빈도 반영</td>
+        <td>최소 빈도 2개 이상 시 추가 규칙 필요</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 페이지 교체 예시 -->
+  <div class="tip-box">
+    <div class="tip-label">📌 수능 출제 예시 (프레임 3개: 0,1,2 / 사용 순서: A→B→C→B→A→D)</div>
+    페이지 프레임에 A, B, C가 있을 때 D가 필요한 상황:<br>
+    · <b>FIFO</b>: 가장 먼저 들어온 A 교체 → A가 선출 대상<br>
+    · <b>LRU</b>: 최근에 가장 안 쓴 C 교체 (최근 B→A→D 순 참조)<br>
+    · <b>LFU</b>: 사용 빈도가 1회인 C 교체 (A·B는 2회 이상)
+  </div>
+
+  <!-- 연계 배경지식 -->
+  <div class="sec-divider">🔗 연계 출제 가능 개념</div>
+  <div class="concept-grid">
+    <div class="cnode cnode-green">
+      <h4>🖥 MMU (메모리 관리 장치)</h4>
+      <p>가상 메모리 주소를 실제 메모리 주소로 변환하는 하드웨어. 페이징 등 메모리를 일정 단위로 관리한다.</p>
+    </div>
+    <div class="cnode cnode-blue">
+      <h4>🔄 스와핑 (Swapping)</h4>
+      <p>프로세스 전체를 주기억 장치와 보조 기억 장치 사이에 이동시키는 기법. 페이징과 구분할 것.</p>
+    </div>
+    <div class="cnode cnode-purple">
+      <h4>📍 지역성 원리 (Locality)</h4>
+      <p>최근 참조된 데이터나 인접 데이터를 다시 참조할 가능성이 높다는 원리. LRU의 이론적 근거.</p>
+    </div>
+    <div class="cnode cnode-orange">
+      <h4>⚠️ 스래싱 (Thrashing)</h4>
+      <p>페이지 교체가 지나치게 빈번하여 CPU 이용률이 오히려 급격히 낮아지는 현상.</p>
+    </div>
+    <div class="cnode cnode-blue">
+      <h4>📋 페이지 테이블</h4>
+      <p>프로세스마다 존재. 가상 페이지 번호 → 물리 프레임 시작 주소 매핑 정보 기록.</p>
+    </div>
+    <div class="cnode cnode-green">
+      <h4>💡 운영 체제의 역할</h4>
+      <p>페이지 테이블 관리, 페이지 부재 처리, 페이지 교체 결정 등 가상 메모리 전반을 총괄한다.</p>
+    </div>
+  </div>
+
+  <!-- 프로세스 흐름 -->
+  <div class="sec-divider">페이지 부재 처리 흐름</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h5>페이지 접근</h5>
+      <p>운영체제가 페이지 테이블 확인</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h5>페이지 부재 확인</h5>
+      <p>해당 페이지가 프레임에 없음</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h5>보조 기억 장치 탐색</h5>
+      <p>해당 페이지 위치 파악</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h5>페이지 교체</h5>
+      <p>알고리즘으로 내보낼 페이지 선택</p>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <h5>페이지 로드</h5>
+      <p>새 페이지를 프레임에 올림</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ========== TAB 2: GPU ========== -->
+<div id="tab-gpu" class="section-panel">
+
+  <div class="section-header">
+    <div class="section-num num-purple">2</div>
+    <div class="section-title-wrap">
+      <h2>연산 환경 변화와 GPU</h2>
+      <p>EBS 수능특강 독서 198쪽 | 과학·기술 08</p>
+    </div>
+  </div>
+
+  <div class="overview-box purple">
+    기존의 CPU 중심 연산 환경에서 AI·영상처리·과학 계산 수요 급증으로, <strong>동일 연산을 대량 병렬 처리</strong>하는 데 특화된 <strong>GPU(그래픽 처리 장치)</strong>가 새로운 핵심 장치로 부상했다. 현대 컴퓨팅 시스템은 CPU와 GPU를 함께 운용한다.
+  </div>
+
+  <!-- ORG CHART GPU -->
+  <div class="org-chart">
+    <h3 class="purple">🗂 GPU 전체 구조도</h3>
+    <div class="flow-wrap">
+      <div class="flow-row">
+        <div class="fnode fnode-main purple">GPU (그래픽 처리 장치)</div>
+      </div>
+      <div class="flow-arrow-down purple">▼</div>
+      <div class="flow-row">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div class="fnode fnode-sub purple">연산 유닛 (Compute Unit)</div>
+          <div class="fnode fnode-leaf">스레드 블록 집합체</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div class="fnode fnode-sub purple">메모리 계층</div>
+          <div class="fnode fnode-leaf">전역·공유·레지스터</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div class="fnode fnode-sub purple">스케줄러</div>
+          <div class="fnode fnode-leaf">스레드 블록 분배·제어</div>
+        </div>
+      </div>
+      <div class="flow-arrow-down purple">▼</div>
+      <div class="flow-row">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div class="fnode fnode-sub purple">스레드 블록</div>
+          <div class="fnode fnode-leaf">여러 스레드의 묶음</div>
+        </div>
+        <div style="margin:0 10px; align-self:center; color: var(--purple); font-size:20px;">→</div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div class="fnode fnode-sub purple">스레드</div>
+          <div class="fnode fnode-leaf">최소 연산 단위 (명령어 1개)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 핵심 개념 카드 -->
+  <div class="sec-divider purple">핵심 개념</div>
+  <div class="cards-grid">
+    <div class="card purple">
+      <div class="card-label">CPU vs GPU</div>
+      <span class="keyword">비교 핵심</span>
+      <h4>CPU와 GPU의 차이</h4>
+      <p>CPU는 <b>소수의 고성능 코어</b>로 복잡한 제어·순차 작업에 최적화. GPU는 <b>수백~수천 개의 단순 코어</b>로 동일 연산을 대량 병렬 처리하는 구조.</p>
+    </div>
+    <div class="card purple">
+      <div class="card-label">Thread</div>
+      <span class="keyword">스레드</span>
+      <h4>스레드 & 스레드 블록</h4>
+      <p>스레드는 연산의 최소 단위(명령어 1개 실행). 스레드 블록은 여러 스레드의 묶음으로, 스레드 블록 내 스레드들은 기본적으로 <b>동일한 명령어</b>를 실행한다.</p>
+    </div>
+    <div class="card blue">
+      <div class="card-label">Memory</div>
+      <span class="keyword" style="background:var(--blue-pale);color:var(--blue);">메모리 계층</span>
+      <h4>GPU 내 3종 메모리</h4>
+      <p><b>전역 메모리</b>: 모든 스레드 접근 가능, 속도 느림<br><b>공유 메모리</b>: 스레드 블록 내 공유, 중간 속도<br><b>레지스터</b>: 용량 작지만 가장 빠름</p>
+    </div>
+    <div class="card orange">
+      <div class="card-label">Weakness</div>
+      <span class="keyword" style="background:#fff5f2;color:var(--orange);">GPU 한계</span>
+      <h4>분기문 & 조건 판단</h4>
+      <p>GPU는 모든 스레드가 <b>동일 명령어</b>를 실행하도록 설계됨. 분기문·조건 판단이 삽입되면 일부 스레드가 대기 → <b>병렬성 손실</b> 발생.</p>
+    </div>
+  </div>
+
+  <!-- CPU vs GPU 비교표 -->
+  <div class="sec-divider purple">CPU vs GPU 심층 비교</div>
+  <div class="compare-table">
+    <table>
+      <tr>
+        <th>항목</th>
+        <th class="green-head">CPU</th>
+        <th class="purple-head">GPU</th>
+      </tr>
+      <tr>
+        <td>코어 수</td>
+        <td>수 ~ 수십 개 (고성능)</td>
+        <td>수백 ~ 수천 개 (단순)</td>
+      </tr>
+      <tr>
+        <td>적합 작업</td>
+        <td>복잡한 제어, 순차 처리, OS 관리</td>
+        <td>동일 연산 반복, 대규모 병렬 처리</td>
+      </tr>
+      <tr>
+        <td>명령어 처리</td>
+        <td>복잡한 명령어 집합, 순서 다양</td>
+        <td>동일 명령어 다수 데이터에 반복 적용</td>
+      </tr>
+      <tr>
+        <td>활용 분야</td>
+        <td>일반 응용프로그램, 운영 체제</td>
+        <td>AI 학습, 영상 처리, 과학 시뮬레이션</td>
+      </tr>
+      <tr>
+        <td>분기문 처리</td>
+        <td>효율적</td>
+        <td>비효율 (스레드 대기 발생)</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- GPU 연계 개념 -->
+  <div class="sec-divider purple">🔗 연계 출제 가능 개념</div>
+  <div class="concept-grid">
+    <div class="cnode cnode-purple">
+      <h4>🧠 NPU (신경망 처리 장치)</h4>
+      <p>AI 연산에 특화된 장치. GPU보다 전력 효율이 높고 AI 추론에 최적화. 스마트폰 등에 내장.</p>
+    </div>
+    <div class="cnode cnode-blue">
+      <h4>⚡ SIMD 구조</h4>
+      <p>"Single Instruction, Multiple Data" — 하나의 명령어로 여러 데이터를 동시에 처리. GPU 병렬 처리의 핵심 원리.</p>
+    </div>
+    <div class="cnode cnode-green">
+      <h4>🔢 딥러닝과 행렬 연산</h4>
+      <p>AI 학습의 핵심인 행렬 곱셈·역전파 연산은 동일한 연산의 반복 → GPU가 최적화되어 있어 딥러닝에 활용.</p>
+    </div>
+    <div class="cnode cnode-orange">
+      <h4>🌡 열 병목과 전력 효율</h4>
+      <p>GPU는 코어 수가 많아 발열·전력 소모가 큼. 이를 해결하기 위한 칩 설계와 냉각 기술이 중요한 연구 분야.</p>
+    </div>
+    <div class="cnode cnode-blue">
+      <h4>🔗 CPU-GPU 협력 구조</h4>
+      <p>CPU가 전체 흐름 제어, GPU가 반복 연산 담당. 연산 흐름을 유기적으로 조율하는 소프트웨어 설계가 핵심.</p>
+    </div>
+    <div class="cnode cnode-purple">
+      <h4>📡 CUDA / OpenCL</h4>
+      <p>GPU 병렬 연산을 프로그래밍하기 위한 플랫폼. GPU의 범용 계산(GPGPU)을 가능하게 하는 소프트웨어 환경.</p>
+    </div>
+  </div>
+
+  <!-- GPU 연산 과정 -->
+  <div class="sec-divider purple">GPU 연산 이루어지는 과정</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num purple">1</div>
+      <h5>명령어 전달</h5>
+      <p>CPU → GPU에 명령어 전송</p>
+    </div>
+    <div class="step">
+      <div class="step-num purple">2</div>
+      <h5>디코딩</h5>
+      <p>스케줄러가 명령어 해석</p>
+    </div>
+    <div class="step">
+      <div class="step-num purple">3</div>
+      <h5>스레드 블록 분배</h5>
+      <p>각 연산 유닛에 배정</p>
+    </div>
+    <div class="step">
+      <div class="step-num purple">4</div>
+      <h5>병렬 연산</h5>
+      <p>스레드들이 동시 실행</p>
+    </div>
+    <div class="step">
+      <div class="step-num purple">5</div>
+      <h5>결과 저장</h5>
+      <p>GPU 내 메모리에 저장</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ========== TAB 3: 퀴즈 I (가상 메모리) ========== -->
+<div id="tab-quiz1" class="section-panel">
+
+  <div class="section-header">
+    <div class="section-num num-green">Q</div>
+    <div class="section-title-wrap">
+      <h2>OX 퀴즈 — 가상 메모리</h2>
+      <p>각 문항을 읽고 O(맞음) 또는 X(틀림)를 선택하세요</p>
+    </div>
+  </div>
+
+  <div class="quiz-section">
+    <h3>💾 <span class="quiz-badge">가상 메모리</span> 핵심 OX 퀴즈</h3>
+
+    <!-- Q1 -->
+    <div class="quiz-item" id="q1">
+      <div class="quiz-q"><span class="qnum">1</span> 주기억 장치는 보조 기억 장치보다 저장 용량이 크다.</div>
+      <div class="quiz-btns">
+        <button class="btn-ox o-btn" onclick="checkAnswer('q1','O','X')">⭕</button>
+        <button class="btn-ox x-btn" onclick="checkAnswer('q1','X','X')">❌</button>
+      </div>
+      <div class="quiz-answer" id="q1-ans">
+        ❌ <b>틀림 (X)</b> — 주기억 장치(RAM)는 속도가 빠르지만 <b>용량이 작고</b>, 보조 기억 장치(HDD/SSD)가 용량이 크다.
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="quiz-item" id="q2">
+      <div class="quiz-q"><span class="qnum">2</span> 가상 메모리는 보조 기억 장치의 일부를 메모리처럼 사용하는 기법이다.</div>
+      <div class="quiz-btns">
+        <button class="btn-ox o-btn" onclick="checkAnswer('q2','O','O')">⭕</button>
+        <button class="btn-ox x-btn" onclick="checkAnswer('q2','X','O')">❌</button>
+      </div>
+      <div class="quiz-answer" id="q2-ans">
+        ✅ <b>맞음 (O)</b> — 가상 메모리는 보조 기억 장치의 일부를 '메모리'처럼 쓴다는 의미에서 '가상 메모리'라 불린다.
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="quiz-item" id="q3">
+      <div class="quiz-q"><span class="qnum">3</span> 페이징에서 페이지와 페이지 프레임의 크기는 서로 다를 수 있다.</div>
+      <div class="quiz-btns">
+        <button class="btn-ox o-btn" onclick="checkAnswer('q3','O','X')">⭕</button>
+        <button class="btn-ox x-btn" onclick="checkAnswer('q3','X','X')">❌</button>
+      </div>
+      <div class="quiz-answer" id="q3-ans">
+        ❌ <b>틀림 (X)</b> — 페이지와 페이지 프레임의 크기는 <b>같다</b>. 페이지 단위로 프레임에 들어가기 때문이다.
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="quiz-item" id="q4">
+      <div class="quiz-q"><span class="qnum">4</span> 페이지 교체 시 교체할 페이지의 내용이 수정되었으면 보조 기억 장치에 먼저 저장한 후 제거한다.</div>
+      <div class="quiz-btns">
+        <button class="btn-ox o-btn" onclick="checkAnswer('q4','O','O')">⭕</button>
+        <button class="btn-ox x-btn" onclick="checkAnswer('q4','X','O')">❌</button>
+      </div>
+      <div class="quiz-answer" id="q4-ans">
+        ✅ <b>맞음 (O)</b> — 내용이 수정된 페이지는 보조 기억 장치에 수정 사항을 기록한 후 제거해야 데이터 손실을 막을 수 있다.
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="quiz-item" id="q5">
+      <div class="quiz-q"><span class="qnum">5</span> FIFO 방식은 미래에 자주 사용될 페이지를 고려하여 교체 대상을 선정한다.</div>
+      <div class="quiz-btns">
+        <button class="btn-ox o-btn" onclick="checkAnswer('q5','O','X')">⭕</button>
+        <button class="btn-ox x-btn" onclick="checkAnswer('q5','X','X')">❌</button>
+      </div>
+      <div class="quiz-answer" id="q5-ans">
+        ❌ <b>틀림 (X)</b> — FIFO는 <b>가장 먼저 들어온 순서</b>대로 교체하며, 미래의 참조 가능성을 전혀 고려하지 않는다. 그래서 비효율적인 상황이 발생할 수 있다.
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="quiz-item" id="q6">
+      <div class="quiz-q"><span class="qnum">6</span> LRU 알고리즘은 '시간 지역성' 원리를 근거로 한다.</div>
+      <div class="quiz-btns">
+        <button class="btn-ox o-btn" onclick="checkAnswer('q6','O','O')">⭕</button>
+        <button class="btn-ox x-btn" onclick="checkAnswer('q6','X','O')">❌</button>
+      </div>
+      <div class="quiz-answer" id="q6-ans">
+        ✅ <b>맞음 (O)</b> — LRU는 최근에 참조된 페이지가 미래에도 다시 참조될 가능성이 높다는 시간 지역성에 근거한다.
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="quiz-item" id="q7">
+      <div class="quiz-q"><span class="qnum">7</span> LFU 방식에서 최소 빈도 페이지가 2개 이상이면 추가 규칙이 필요하다.</div>
+      <div class="quiz-btns">
+        <button class="btn-ox o-btn" onclick="checkAnswer('q7','O','O')">⭕</button>
+        <button class="btn-ox x-btn" onclick="checkAnswer('q7','X','O')">❌</button>
+      </div>
+      <div class="quiz-answer" id="q7-ans">
+        ✅ <b>맞음 (O)</b> — LFU에서 최소 빈도가 같은 페이지가 2개 이상이면, 예를 들어 FIFO나 LRU 방식을 추가 적용하는 등 별도 규칙이 필요하다.
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="quiz-item" id="q8">
+      <div class="quiz-q"><span class="qnum">8</span> 가상 메모리 주소와 실제 메모리 주소는 항상 일치한다.</div>
+      <div class="quiz-btns">
+        <button class="btn-ox o-btn" onclick="checkAnswer('q8','O','X')">⭕</button>
+        <button class="btn-ox x-btn" onclick="checkAnswer('q8','X','X')">❌</button>
+      </div>
+      <div class="quiz-answer" id="q8-ans">
+        ❌ <b>틀림 (X)</b> — 가상 메모리 주소와 실제 메모리 주소는 <b>일치하지 않는다</b>. MMU(메모리 관리 장치)가 이를 변환해준다.
+      </div>
+    </div>
+
+    <div id="score1-display" class="score-display">
+      📊 결과: <span id="score1-text"></span>
+    </div>
+    <button onclick="calcScore(1)" style="margin-top:14px; width:100%; padding:12px; background:var(--green); color:white; border:none; border-radius:10px; font-size:14px; font-weight:700; cursor:pointer; font-family:inherit;">
+      📊 결과 확인하기
+    </button>
+  </div>
+</div>
+
+<!-- ========== TAB 4: 퀴즈 II (GPU) ========== -->
+<div id="tab-quiz2" class="section-panel">
+
+  <div class="section-header">
+    <div class="section-num num-purple">Q</div>
+    <div class="section-title-wrap">
+      <h2>OX 퀴즈 — GPU</h2>
+      <p>각 문항을 읽고 O(맞음) 또는 X(틀림)를 선택하세요</p>
+    </div>
+  </div>
+
+  <div class="quiz-section">
+    <h3>🖥️ <span class="quiz-badge purple">GPU</span> 핵심 OX 퀴즈</h3>
+
+    <!-- GQ1 -->
+    <div class="quiz-item" id="gq1">
+      <div class="quiz-q"><span class="qnum qnum purple" style="background:var(--purple)">1</span> GPU는 소수의 고성능 코어로 복잡한 제어 흐름을 처리하는 데 최적화되어 있다.</div>
+      <div class="quiz-btns">
+        <button class="btn-ox o-btn" onclick="checkAnswer('gq1','O','X')">⭕</button>
+        <button class="btn-ox x-btn" onclick="checkAnswer('gq1','X','X')">❌</button>
+      </div>
+      <div class="quiz-answer" id="gq1-ans">
+        ❌ <b>틀림 (X)</b> — 이는 CPU의 특징이다. GPU는 <b>수백~수천 개의 단순 코어</b>로 동일 연산을 병렬 처리하는 데 최적화되어 있다.
+      </div>
+    </div>
+
+    <!-- GQ2 -->
+    <div class="quiz-item" id="gq2">
+      <div class="quiz-q"><span class="qnum qnum purple" style="background:var(--purple)">2</span> 하나의 스레드는 하나의 명령어를 실행하는 최소 연산 단위다.</div>
+      <div class="quiz-btns">
+        <button class="btn-ox o-btn" onclick="checkAnswer('gq2','O','O')">⭕</button>
+        <button class="btn-ox x-btn" onclick="checkAnswer('gq2','X','O')">❌</button>
+      </div>
+      <div class="quiz-answer" id="gq2-ans">
+        ✅ <b>맞음 (O)</b> — 스레드는 연산을 수행하는 최소 단위로, 하나의 스레드는 하나의 명령어를 실행한다.
+      </div>
+    </div>
+
+    <!-- GQ3 -->
+    <div class="quiz-item" id="gq3">
+      <div class="quiz-q"><span class="qnum qnum purple" style="background:var(--purple)">3</span> GPU의 전역 메모리는 접근 속도가 빠르지만 스레드 블록 내부에서만 공유된다.</div>
+      <div class="quiz-btns">
+        <button class="btn-ox o-btn" onclick="checkAnswer('gq3','O','X')">⭕</button>
+        <button class="btn-ox x-btn" onclick="checkAnswer('gq3','X','X')">❌</button>
+      </div>
+      <div class="quiz-answer" id="gq3-ans">
+        ❌ <b>틀림 (X)</b> — 전역 메모리는 모든 스레드가 접근할 수 있지만 <b>접근 속도가 느리다</b>. 스레드 블록 내 공유는 '공유 메모리'의 특징이다.
+      </div>
+    </div>
+
+    <!-- GQ4 -->
+    <div class="quiz-item" id="gq4">
+      <div class="quiz-q"><span class="qnum qnum purple" style="background:var(--purple)">4</span> GPU는 분기문이나 조건 판단이 자주 등장하는 연산에서 병렬 처리의 효율이 낮아질 수 있다.</div>
+      <div class="quiz-btns">
+        <button class="btn-ox o-btn" onclick="checkAnswer('gq4','O','O')">⭕</button>
+        <button class="btn-ox x-btn" onclick="checkAnswer('gq4','X','O')">❌</button>
+      </div>
+      <div class="quiz-answer" id="gq4-ans">
+        ✅ <b>맞음 (O)</b> — 분기문이 삽입되면 스레드마다 실행할 작업이 달라져, 일부 스레드가 대기하게 되어 병렬성이 손실된다.
+      </div>
+    </div>
+
+    <!-- GQ5 -->
+    <div class="quiz-item" id="gq5">
+      <div class="quiz-q"><span class="qnum qnum purple" style="background:var(--purple)">5</span> 레지스터는 GPU 메모리 중 접근 속도가 가장 빠르다.</div>
+      <div class="quiz-btns">
+        <button class="btn-ox o-btn" onclick="checkAnswer('gq5','O','O')">⭕</button>
+        <button class="btn-ox x-btn" onclick="checkAnswer('gq5','X','O')">❌</button>
+      </div>
+      <div class="quiz-answer" id="gq5-ans">
+        ✅ <b>맞음 (O)</b> — 레지스터는 용량은 작지만 접근 속도가 매우 빠르다. GPU 메모리는 속도 순으로 레지스터 > 공유 메모리 > 전역 메모리다.
+      </div>
+    </div>
+
+    <!-- GQ6 -->
+    <div class="quiz-item" id="gq6">
+      <div class="quiz-q"><span class="qnum qnum purple" style="background:var(--purple)">6</span> 스케줄러는 GPU에 전달된 명령어에 따라 스레드 블록을 각 연산 유닛에 분배하고 병렬 처리를 제어한다.</div>
+      <div class="quiz-btns">
+        <button class="btn-ox o-btn" onclick="checkAnswer('gq6','O','O')">⭕</button>
+        <button class="btn-ox x-btn" onclick="checkAnswer('gq6','X','O')">❌</button>
+      </div>
+      <div class="quiz-answer" id="gq6-ans">
+        ✅ <b>맞음 (O)</b> — 스케줄러는 명령어를 해석하여 스레드 블록을 연산 유닛에 배정하고 병렬 처리가 이루어지도록 총괄 제어한다.
+      </div>
+    </div>
+
+    <!-- GQ7 -->
+    <div class="quiz-item" id="gq7">
+      <div class="quiz-q"><span class="qnum qnum purple" style="background:var(--purple)">7</span> 현대 컴퓨팅 시스템은 CPU와 GPU 중 하나만 선택하여 운용한다.</div>
+      <div class="quiz-btns">
+        <button class="btn-ox o-btn" onclick="checkAnswer('gq7','O','X')">⭕</button>
+        <button class="btn-ox x-btn" onclick="checkAnswer('gq7','X','X')">❌</button>
+      </div>
+      <div class="quiz-answer" id="gq7-ans">
+        ❌ <b>틀림 (X)</b> — 현대 컴퓨팅 시스템은 CPU와 GPU의 장점을 모두 살리기 위해 <b>두 장치를 함께 운용</b>하는 구조로 발전하고 있다.
+      </div>
+    </div>
+
+    <!-- GQ8 -->
+    <div class="quiz-item" id="gq8">
+      <div class="quiz-q"><span class="qnum qnum purple" style="background:var(--purple)">8</span> AI 학습에서 행렬 곱셈이나 역전파 연산은 동일 연산의 반복이므로 GPU 활용에 적합하다.</div>
+      <div class="quiz-btns">
+        <button class="btn-ox o-btn" onclick="checkAnswer('gq8','O','O')">⭕</button>
+        <button class="btn-ox x-btn" onclick="checkAnswer('gq8','X','O')">❌</button>
+      </div>
+      <div class="quiz-answer" id="gq8-ans">
+        ✅ <b>맞음 (O)</b> — AI 학습의 핵심인 행렬 연산·역전파는 동일 연산의 대규모 반복으로, GPU의 병렬 처리 구조에 매우 적합하다.
+      </div>
+    </div>
+
+    <div id="score2-display" class="score-display purple">
+      📊 결과: <span id="score2-text"></span>
+    </div>
+    <button onclick="calcScore(2)" style="margin-top:14px; width:100%; padding:12px; background:var(--purple); color:white; border:none; border-radius:10px; font-size:14px; font-weight:700; cursor:pointer; font-family:inherit;">
+      📊 결과 확인하기
+    </button>
+  </div>
+</div>
+
+<script>
+  function showTab(name) {
+    document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    const tabs = ['vm','gpu','quiz1','quiz2'];
+    const idx = tabs.indexOf(name);
+    document.querySelectorAll('.nav-tab')[idx].classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  const answers = {};
+
+  function checkAnswer(qid, selected, correct) {
+    answers[qid] = selected;
+    const item = document.getElementById(qid);
+    const ansDiv = document.getElementById(qid + '-ans');
+    
+    item.querySelectorAll('.btn-ox').forEach(b => b.classList.remove('selected'));
+    const btns = item.querySelectorAll('.btn-ox');
+    if (selected === 'O') btns[0].classList.add('selected');
+    else btns[1].classList.add('selected');
+
+    ansDiv.classList.add('show');
+    ansDiv.classList.remove('correct','wrong');
+    ansDiv.classList.add(selected === correct ? 'correct' : 'wrong');
+  }
+
+  function calcScore(set) {
+    const q1keys = ['q1','q2','q3','q4','q5','q6','q7','q8'];
+    const q2keys = ['gq1','gq2','gq3','gq4','gq5','gq6','gq7','gq8'];
+    const corrects = {
+      q1:'X',q2:'O',q3:'X',q4:'O',q5:'X',q6:'O',q7:'O',q8:'X',
+      gq1:'X',gq2:'O',gq3:'X',gq4:'O',gq5:'O',gq6:'O',gq7:'X',gq8:'O'
+    };
+    const keys = set === 1 ? q1keys : q2keys;
+    let score = 0, total = keys.length;
+    keys.forEach(k => {
+      if (answers[k] && answers[k] === corrects[k]) score++;
+    });
+    const dispId = 'score' + set + '-display';
+    const txtId = 'score' + set + '-text';
+    const msg = score === total ? '🎉 완벽합니다!' : score >= total*0.75 ? '👍 잘했어요!' : '📚 다시 복습해봐요';
+    document.getElementById(txtId).textContent = `${score} / ${total} 정답  ${msg}`;
+    document.getElementById(dispId).classList.add('show');
+  }
+</script>
+
+</body>
+</html>
